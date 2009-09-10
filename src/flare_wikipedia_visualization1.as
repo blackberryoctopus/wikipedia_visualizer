@@ -195,7 +195,7 @@ package {
 				removeChild( vis );
 				
 				var wikiurl : String = String( e.node.data.url );
-				url = "http://devel.nabbr.com/cgi-bin/wikilink?url="+wikiurl;
+				
 				
 				
 					
