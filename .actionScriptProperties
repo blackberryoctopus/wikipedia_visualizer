@@ -2,7 +2,7 @@
 <actionScriptProperties mainApplicationPath="flare_wikipedia_visualization1.as" version="3">
 <compiler additionalCompilerArguments="" copyDependentFiles="true" enableModuleDebug="true" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="true" htmlHistoryManagement="true" htmlPlayerVersion="9.0.124" htmlPlayerVersionCheck="true" outputFolderPath="bin-debug" sourceFolderPath="src" strict="true" useApolloConfig="false" verifyDigests="true" warn="true">
 <compilerSourcePath>
-<compilerSourcePathEntry kind="1" linkType="1" path="/Users/blackberryoctopus/Documents/Code/prefuse.flare-alpha-20080808/flare/src"/>
+<compilerSourcePathEntry kind="1" linkType="1" path="/Users/blackberryoctopus/Documents/Code/projects/prefuse/flare/src"/>
 <compilerSourcePathEntry kind="1" linkType="1" path="${PROJECT_FRAMEWORKS}/projects/framework/src"/>
 <compilerSourcePathEntry kind="1" linkType="1" path="/Users/blackberryoctopus/Documents/Code/actionscript/as3corelib-.92.1/src"/>
 </compilerSourcePath>

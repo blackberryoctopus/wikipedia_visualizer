@@ -50,7 +50,7 @@ package {
 		private var tUpdate 		: TextField;
 		
 		private var _term 			: String 		= "visualization";
-		private var url 			: String 		= "http://devel.nabbr.com/cgi-bin/wikilink?q="+_term;
+		private var url 			: String 		= "http://localhost:8887/cgi-bin/wikilink?q="+_term;
 		private var _b 				: Rectangle 	= new Rectangle( 0, 0, 1024, 600 );
 		private var _history		: Breadcrumbs;
 		private var hs				: HistorySprite;
@@ -58,7 +58,6 @@ package {
 	
 		public function flare_wikipedia_visualization1()
 		{
-			Security.allowDomain("http://devel.nabbr.com/");		
 			addTextField();
 			
 			var l : URLLoader = new URLLoader( new URLRequest( url ) );
@@ -71,7 +70,8 @@ package {
 		private function complete( e : Event ) : void
 		{
 			var s : String 	= e.target.data as String;
-			var a : Array 	= JSON.decode(s ) as Array;
+			
+			var a : Array 	= JSON.decode( s ) as Array;
 			
 			if( a.length > 140 ) _fmt.size = 10;
 			else if ( a.length > 220 ) _fmt.size = 9;
@@ -290,6 +290,7 @@ package {
 		
 		private function buildData( tuples : Array ) : Data
 		{
+			
 			var d : Data 	= new Data();
 			var t : Tree 	= new Tree();
 			t.root 			= d.addNode( { name : _term, size : 50 } );
