@@ -50,7 +50,7 @@ package {
 		private var tUpdate 		: TextField;
 		
 		private var _term 			: String 		= "visualization";
-		private var url 			: String 		= "http://localhost:8887/cgi-bin/wikilink?q="+_term;
+		private var url 			: String 		= "http://localhost:8887/cgi-bin/wikilink?q=";
 		private var _b 				: Rectangle 	= new Rectangle( 0, 0, 1024, 600 );
 		private var _history		: Breadcrumbs;
 		private var hs				: HistorySprite;
@@ -60,7 +60,7 @@ package {
 		{
 			addTextField();
 			
-			var l : URLLoader = new URLLoader( new URLRequest( url ) );
+			var l : URLLoader = new URLLoader( new URLRequest( url+_term ) );
 			l.addEventListener(	IOErrorEvent.IO_ERROR, 	ioerror );
 			l.addEventListener(	Event.COMPLETE, 		complete );
 		}
@@ -198,9 +198,9 @@ package {
 				
 				
 				
-					
 				
-				var l : URLLoader = new URLLoader( new URLRequest( url ) );
+				
+				var l : URLLoader = new URLLoader( new URLRequest( url+_term ) );
 				l.addEventListener(IOErrorEvent.IO_ERROR, ioerror );
 				l.addEventListener(Event.COMPLETE, complete );
 		}
