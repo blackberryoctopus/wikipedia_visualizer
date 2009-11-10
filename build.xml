@@ -8,7 +8,7 @@
 	
 	<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar" />
 	
-<target name="all" depends="mkdirs" description="Build Force Loader Test" >
+<target name="all" depends="mkdirs" description="Build Wikipedia Visualizer" >
 	<mxmlc
 			file="${ACTIONSCRIPT_SRC}/flare_wikipedia_visualization1.as"
 			output="${OUTPUT}/WikipediaVisualizer.swf"
@@ -30,7 +30,7 @@
 	
 	
    
-    <copy todir="" file="" />
+ 
 
 
 
