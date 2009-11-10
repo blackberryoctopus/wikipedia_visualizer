@@ -1,1 +1,4 @@
-A little project to download data from wikipedia and display.  Currently unfinished.
+
+Scrape a wikipedia page and find all outgoing links to other wikipedia articles. Display that data visually.
+
+
