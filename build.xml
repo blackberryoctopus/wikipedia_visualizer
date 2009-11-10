@@ -35,7 +35,13 @@
 	<copy todir="${OUTPUT}" file="${SRC}/js/swfobject.js" />
 	<copy todir="${OUTPUT}" file="${SRC}/html/index.html" />
 	<copy todir="${CGIBIN}" file="${SRC}/perl/wikilink" />
-	  <chmod file="${CGIBIN}/wikilink" perm="ugo+x"/>
+	  <chmod file="${CGIBIN}/wikilink" perm="ugo+x"/>    
+	
+	
+	<exec executable="open" spawn="yes">  
+	    <arg line="-a Safari" />  
+	    <arg line="http://localhost:8887/wikipedia/visualizer/" />  
+	</exec>
 	
    
  
