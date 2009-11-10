@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="Carousel Proof of Concept" basedir="." default="all">
+<project name="Wikipedia Visualizer" basedir="." default="all">
 	
 	<property name="FLEX_HOME" value="/usr/share/flex"/>
 	<property name="OUTPUT" value="${basedir}/build"   />
    	<property name="ACTIONSCRIPT_SRC" value="${basedir}/src/actionscript/"   /> 
+   	<property name="SRC" value="${basedir}/src/"   />
+ 	<property name="CGIBIN" value="/Applications/MAMP/cgi-bin" />
+
 	
 	<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar" />
 	
@@ -24,10 +27,15 @@
 			<source-path path-element="${ACTIONSCRIPT_SRC}/prefuse/flare/src/" />
 		    
 		
-   
+       
+
  
 	</mxmlc>
 	
+	<copy todir="${OUTPUT}" file="${SRC}/js/swfobject.js" />
+	<copy todir="${OUTPUT}" file="${SRC}/html/index.html" />
+	<copy todir="${CGIBIN}" file="${SRC}/perl/wikilink" />
+	  <chmod file="${CGIBIN}/wikilink" perm="ugo+x"/>
 	
    
  
