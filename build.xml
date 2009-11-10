@@ -4,13 +4,14 @@
 	
 	<property name="FLEX_HOME" value="/usr/share/flex"/>
 	<property name="OUTPUT" value="${basedir}/build"   />
-	<property name="LIB_SPARK_AS3" value="/Users/blackberryoctopus/Documents/Code/projects/libspark"   />
+   	<property name="ACTIONSCRIPT_SRC" value="${basedir}/src/actionscript/"   /> 
+	
 	<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar" />
 	
 <target name="all" depends="mkdirs" description="Build Force Loader Test" >
 	<mxmlc
-			file="${basedir}/TestForceLoad.as"
-			output="${OUTPUT}/TestForceLoad.swf"
+			file="${ACTIONSCRIPT_SRC}/flare_wikipedia_visualization1.as"
+			output="${OUTPUT}/WikipediaVisualizer.swf"
 			compiler.optimize="true"
    			compiler.accessible="true"
 			compiler.debug="true"
@@ -19,8 +20,9 @@
 			incremental="false"
 			>   
 		 	
-			<source-path path-element="${basedir}/" />
-			<source-path path-element="${LIB_SPARK_AS3}/as3/ForcibleLoader/src/"/>
+			<source-path path-element="${ACTIONSCRIPT_SRC}/" />
+			<source-path path-element="${ACTIONSCRIPT_SRC}/prefuse/flare/src/" />
+		    
 		
    
  
