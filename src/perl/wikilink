@@ -1,0 +1,61 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings; 
+use WWW::Mechanize;
+use Data::Dumper;
+use CGI qw/:standard/;
+
+
+#my $topic = $ARGV[0];
+my $topic = param('q');
+my $url   = "http://en.wikipedia.org/wiki/$topic";
+
+print "Now extracting link information for $url\n";
+
+my $m = WWW::Mechanize->new(agent => "Linux Mozilla");
+$m->get($url);
+my @a = $m->links;
+
+print "Content-Type: text/plain\n\n";
+
+my @links;
+my @json;
+push @json, "\[\n";
+
+for my $link ( @a ) {
+        if( $link->url =~ /^\/wiki/
+                && $link->url !~ /^\/wiki\/Image:/
+                && $link->url !~ /^\/wiki\/Special:/
+                && $link->url !~ /^\/wiki\/Wikipedia:/
+                && $link->url !~ /^\/wiki\/Talk:/
+                && $link->url !~ /^\/wiki\/Help:/
+                && $link->url !~ /^\/wiki\/Portal:/
+                && $link->url !~ /^\/wiki\/Main_Page/
+                && $link->url !~ /^\/wiki\/Category:/){
+					push @links, $link;
+		}
+}
+
+for my $i ( @links )
+{
+		my $str = "{ \"name\" : \"".$i->text."\", \"url\" : \"".$i->url_abs."\" }";
+        push @json, $str;
+	
+		if( $i ne $links[scalar @links-1] ){
+				push @json, ",\n";
+			}
+        else { push @json, "\n"; }
+}
+
+
+push @json, "\]\n";
+
+for my $j ( @json ) { print $j; }
+
+
+
+
+
+
+
