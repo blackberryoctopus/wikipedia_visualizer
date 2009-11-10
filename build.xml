@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Carousel Proof of Concept" basedir="." default="all">
+	
+	<property name="FLEX_HOME" value="/usr/share/flex"/>
+	<property name="OUTPUT" value="${basedir}/build"   />
+	<property name="LIB_SPARK_AS3" value="/Users/blackberryoctopus/Documents/Code/projects/libspark"   />
+	<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar" />
+	
+<target name="all" depends="mkdirs" description="Build Force Loader Test" >
+	<mxmlc
+			file="${basedir}/TestForceLoad.as"
+			output="${OUTPUT}/TestForceLoad.swf"
+			compiler.optimize="true"
+   			compiler.accessible="true"
+			compiler.debug="true"
+		
+			compiler.verbose-stacktraces="true"                                              
+			incremental="false"
+			>   
+		 	
+			<source-path path-element="${basedir}/" />
+			<source-path path-element="${LIB_SPARK_AS3}/as3/ForcibleLoader/src/"/>
+		
+   
+ 
+	</mxmlc>
+	
+	
+   
+    <copy todir="" file="" />
+
+
+
+</target>
+
+
+	<target name="mkdirs"  description="desc" >
+		<mkdir dir="${OUTPUT}"/>
+	</target>
+	
+	
+	<target name="clean"  description="desc" >
+		<delete dir="${OUTPUT}"/>
+	</target>
+
+
+</project>
