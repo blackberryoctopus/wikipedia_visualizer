@@ -32,7 +32,9 @@ package {
 	import flash.text.TextFormat;
 	import flash.ui.Keyboard;
 
-
+     
+	import com.extralongfingers.graphs.client.loader.JSONLoader;
+	
 
 	[SWF(width="1440",height="900",backgroundColor="#FFFFFF",frameRate="30")]
 
@@ -54,11 +56,14 @@ package {
 		private var _b 				: Rectangle 	= new Rectangle( 0, 0, 1024, 600 );
 		private var _history		: Breadcrumbs;
 		private var hs				: HistorySprite;
-		
+		 
+		private var _jsonLoader:JSONLoader;
 	
 		public function flare_wikipedia_visualization1()
 		{
 			addTextField();
+			
+			_jsonLoader = new JSONLoader();
 			
 			var l : URLLoader = new URLLoader( new URLRequest( url+_term ) );
 			l.addEventListener(	IOErrorEvent.IO_ERROR, 	ioerror );
@@ -278,9 +283,9 @@ package {
 				vis.continuousUpdates = false;
 				removeChild( vis );
 				
-				url = "http://devel.nabbr.com/cgi-bin/wikilink?q="+_term;
+			   
 				
-				var l : URLLoader = new URLLoader( new URLRequest( url ) );
+				var l : URLLoader = new URLLoader( new URLRequest( url+_term ) );
 				l.addEventListener(IOErrorEvent.IO_ERROR, ioerror );
 				l.addEventListener(Event.COMPLETE, complete );
 			}
