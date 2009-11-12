@@ -13,7 +13,7 @@
 	
 <target name="all" depends="mkdirs" description="Build Wikipedia Visualizer" >
 	<mxmlc
-			file="${ACTIONSCRIPT_SRC}/flare_wikipedia_visualization1.as"
+			file="${ACTIONSCRIPT_SRC}/WikipediaVisualizer.as"
 			output="${OUTPUT}/WikipediaVisualizer.swf"
 			compiler.optimize="true"
    			compiler.accessible="true"

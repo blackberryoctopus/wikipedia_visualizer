@@ -59,14 +59,16 @@ package {
 		 
 		private var _jsonLoader:JSONLoader;
 	
-		public function flare_wikipedia_visualization1()
-		{
+		public function WikipediaVisualizer()
+		{   
+			log('');
 			addTextField();
 			
 			_jsonLoader = new JSONLoader();
 			_jsonLoader.url = url+_term;  
 			_jsonLoader.addEventListener( JSONLoader.REQUEST_COMPLETE, complete );
-			_jsonLoader.addEventListener( JSONLoader.REQUEST_ERROR, loadError );
+			_jsonLoader.addEventListener( JSONLoader.REQUEST_ERROR, loadError );   
+			_jsonLoader.submitRequest();
 			
 			
 			
@@ -74,6 +76,14 @@ package {
 		
 		private function loadError( e : Event ):void
 		{
+			log("loadError()");
+		}    
+		
+		
+		private function log( msg : String ) :void
+		{
+			trace( "WikipediaVisualizer."+msg );
+			                                
 			
 		}
 	  
@@ -82,6 +92,7 @@ package {
 		{
 		 
 		   
+		   	log("complete()");
 		
 		
 		   var s : String 	= _jsonLoader.jsonData;
@@ -104,7 +115,9 @@ package {
 		}
 		
 		private function visualize( d : Data ) : void
-		{
+		{   
+			log("visualize()");
+		   	
 			vis = new Visualization(d );
 			
 			vis.bounds 	= _b;
@@ -157,20 +170,25 @@ package {
 		}
 		
 		private function addClickControls() : void
-		{
+		{    
+			log("addClickControls");
 			var cc : ClickControl = new ClickControl( NodeSprite, 1, _fnClick, _fnUnClick );
 			vis.controls.add( cc );
 		}
 		
 		private function addHoverControls() : void
-		{
+		{   
+			log("addHoverControls");
+			
 			var hov : HoverControl = new HoverControl( NodeSprite, HoverControl.DONT_MOVE, nodeOver, nodeRollOut );
 			vis.controls.add( hov );
 		}
 		
 		
 		private function nodeOver( e : SelectionEvent ) : void
-		{
+		{  
+			log("nodeOver");
+			
 			e.node.props.label.color = 0xffaa55ff;
 			e.node.props.label.bold = true;
 			e.node.props.label.size = 14;
@@ -179,7 +197,8 @@ package {
 		}
 		
 		private function nodeRollOut( e : SelectionEvent ) : void
-		{
+		{     
+			log( "nodeRollOut");
 			var node : NodeSprite = e.node;
 			node.props.label.color =0;
 			node.props.label.size = _fmt.size;

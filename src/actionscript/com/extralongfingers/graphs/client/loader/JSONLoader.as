@@ -21,13 +21,15 @@ package com.extralongfingers.graphs.client.loader
 		public static const REQUEST_ERROR : String = "requestError";
 		
 		
-		private var urlLoader : URLLoader;
-		private var urlRequest : URLRequest;
+	   
 		private var _url:String;
 		private var _dispatcher:EventDispatcher;
+	    private var _jsonData:String;  
 	
 		function JSONLoader()
-		{    
+		{      
+			 log( "")
+			
 			_dispatcher = new EventDispatcher();
 			
 		   
@@ -35,10 +37,12 @@ package com.extralongfingers.graphs.client.loader
 		} 
 		
 		public function submitRequest() : void
-		{
+		{  
+			log( "submitRequest()")
+			
 			if(_url)
 			{
-				urlLoader = new URLLoader( new URLRequest( _url ) 			);
+				var urlLoader : URLLoader = new URLLoader( new URLRequest( _url ) 			);
 				urlLoader.addEventListener(IOErrorEvent.IO_ERROR, ioError 	);
 			   	urlLoader.addEventListener(Event.COMPLETE, complete 		); 
 			}   	
@@ -46,22 +50,41 @@ package com.extralongfingers.graphs.client.loader
 		
 		
 		private function ioError( e : IOErrorEvent )  : void
-		{
-			_dispatcher.dispatchEvent( new Event(REQUEST_ERROR) );
+		{ 
+			log( "ioError()")
+			
+			_dispatcher.dispatchEvent( new Event(REQUEST_ERROR) );  
 		}   
 		
 		private function complete( e : Event ) : void
-		{
-			_dispatcher.dispatchEvent( new Event(REQUEST_COMPLETE) );
+		{   
+			log( "complete()")
+			
+			_jsonData = e.target.data as String;
+			
+			_dispatcher.dispatchEvent( new Event(REQUEST_COMPLETE) );  
 			
 			
+			
+		}   
+		
+		
+	    public function addEventListener(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0, useWeakReference:Boolean = false):void
+	    {     
+			log( "addEventlistener() "+type)
+			_dispatcher.addEventListener( type, listener, useCapture, priority, useWeakReference );
 		}
 		
-		
-		public function set url( value : String ) { _url = value; }  
-		
-	
-	
+		public function set url( value : String ) : void { _url = value; }  
+	  	public function get jsonData():String
+	  	{
+	  		return _jsonData;
+	  	}	
+		private function log( msg : String):void
+		{                                 
+			trace( "JSONLoader."+msg);
+			
+		}
  	}
 	
 }
