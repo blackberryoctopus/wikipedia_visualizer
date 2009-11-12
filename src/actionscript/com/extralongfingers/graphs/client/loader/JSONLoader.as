@@ -60,9 +60,16 @@ package com.extralongfingers.graphs.client.loader
 		{   
 			log( "complete()")
 			
-			_jsonData = e.target.data as String;
-			
-			_dispatcher.dispatchEvent( new Event(REQUEST_COMPLETE) );  
+			if( e.target.data ){
+				 _jsonData = e.target.data as String; 
+				_dispatcher.dispatchEvent( new Event(REQUEST_COMPLETE) );  
+				
+			}
+			    
+			else
+			{
+				ioError( new IOErrorEvent("null data") );
+			}
 			
 			
 			

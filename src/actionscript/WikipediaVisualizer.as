@@ -325,7 +325,7 @@ package {
 		
 		private function buildData( tuples : Array ) : Data
 		{
-			
+			 log("buildData()")
 			var d : Data 	= new Data();
 			var t : Tree 	= new Tree();
 			t.root 			= d.addNode( { name : _term, size : 50 } );
@@ -342,7 +342,8 @@ package {
 			tuples.sortOn( "name" );
 			
 			var _num : Number = 0;
-			for each ( o in tuples ) {
+			for each ( o in tuples ) {   
+				trace( "{ name : "+o.name+" url : "+o.url+"} ");
 				u = d.addNode( { url : o.url, name : o.name, size : 25, depth :( _num < 500 )?1:2 } );
 				d.addEdgeFor( t.root, u );
 				t.addChild( t.root, u );
